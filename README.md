@@ -1,2 +1,2 @@
-# Taiga3
+# Taiga
 Taiga Refactor
