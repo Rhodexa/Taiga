@@ -1,0 +1,19 @@
+﻿  Engine.cpp
+C:\Users\Casa\source\repos\Taiga\Conifer\Engine.cpp(66,21): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
+C:\Users\Casa\source\repos\Taiga\Conifer\Engine.cpp(67,21): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
+  Shader.cpp
+  main.cpp
+  Renderer.cpp
+  Object.cpp
+C:\Users\Casa\source\repos\Taiga\Conifer\Object.cpp(13,10): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+C:\Users\Casa\source\repos\Taiga\Conifer\Object.cpp(13,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Casa\source\repos\Taiga\Conifer\Object.cpp(14,11): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+C:\Users\Casa\source\repos\Taiga\Conifer\Object.cpp(14,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Casa\source\repos\Taiga\Conifer\Object.cpp(15,15): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+C:\Users\Casa\source\repos\Taiga\Conifer\Object.cpp(15,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Casa\source\repos\Taiga\Conifer\Object.cpp(16,14): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+C:\Users\Casa\source\repos\Taiga\Conifer\Object.cpp(16,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'C:\Users\Casa\source\repos\Taiga\Debug\vc120.pdb'; linking object as if no debug info
+  Conifer.vcxproj -> C:\Users\Casa\source\repos\Taiga\Debug\Conifer.exe
