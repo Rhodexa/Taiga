@@ -6,7 +6,8 @@
 namespace logpush {
 	void quit() {
 		system("pause");
-		SDL_Quit();
+		//SDL_Quit();
+		glfwTerminate();
 	}
 
 	void fail(std::string err) {
@@ -15,7 +16,7 @@ namespace logpush {
 	}
 
 	void end(std::string err) {
-		std::cout << err << ": " << SDL_GetError() << std::endl;
+		std::cout << err << ": " << glfwGetError(NULL) << std::endl;
 		quit();
 	}	
 }

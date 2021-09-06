@@ -12,8 +12,8 @@ enum class State {
 
 class Engine {
 private:
-	SDL_Window* m_Window;
-	SDL_Surface* m_Surface;
+	GLFWwindow* m_Window;
+	//SDL_Surface* m_Surface;
 	State m_State;
 
 	void draw();
@@ -29,6 +29,7 @@ public:
 	void init(const char*, int, int);
 	void pollEvents();
 	void mainLoop();
-	void resizeViewport(SDL_Event& e);
+	void windowResize(GLFWwindow* window, int width, int height);
+	//void resizeViewport(SDL_Event& e);
 };
 
