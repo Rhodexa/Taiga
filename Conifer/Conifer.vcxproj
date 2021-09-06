@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;GLEW_STATIC;GLEW_STATIC_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Libs\SDL2\include;$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libs\SDL2\include;$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLAD\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <UndefinePreprocessorDefinitions>
       </UndefinePreprocessorDefinitions>
