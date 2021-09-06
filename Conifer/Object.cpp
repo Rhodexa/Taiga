@@ -10,17 +10,16 @@ Object::~Object() {
 
 void Object::Make(float x, float y, float w, float h) {
 	float vertices[] = {
-		x,	   y+0.1, 	  1.0, 1.0, 1.0,
-		x + w, y-0.1,	  1.0, 1.0, 1.0,
-		x + w, y + h+0.1, 1.0, 1.0, 1.0,
-		x,	   y + h-0.1, 1.0, 1.0, 1.0
+		x,	   y, 	  1.0, 1.0, 1.0,
+		x + w, y,	  1.0, 1.0, 1.0,
+		x + w, y + h, 1.0, 1.0, 1.0,
+		x,	   y + h, 1.0, 1.0, 1.0
 	};
 
 	unsigned int indices[] = {
 		0, 1, 2,
 		2, 3, 0
 	};
-
 
 	if(!m_VAOID) glGenVertexArrays(1, &m_VAOID);
 	glBindVertexArray(m_VAOID);
