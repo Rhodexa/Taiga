@@ -5,18 +5,18 @@
 #include "Object.h"
 #include "Renderer.h"
 
-enum class State {
-	PLAY,
-	EXIT
-};
+//enum class State {
+//	PLAY,
+//	EXIT
+//};
 
 class Engine {
 private:
 	GLFWwindow* m_Window;
-	//SDL_Surface* m_Surface;
-	State m_State;
-
+	//State m_State;
 	void draw();
+	void(*drawFunc)();
+	void(*setupFunc)();
 
 public:
 	float mouseX = 0;
@@ -26,10 +26,9 @@ public:
 	Engine();
 	~Engine();
 
-	void init(const char*, int, int);
+	void init(const char*, int, int, void(*draw_func)(), void(*setup_func)());
 	void pollEvents();
 	void mainLoop();
 	void windowResize(GLFWwindow* window, int width, int height);
-	//void resizeViewport(SDL_Event& e);
 };
 

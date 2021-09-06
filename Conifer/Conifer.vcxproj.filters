@@ -38,12 +38,6 @@
     <ClInclude Include="glstuff.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Logit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="logitext.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -79,6 +73,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="..\..\..\..\Desktop\Rhodune\coniferR4.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\Resources\icon.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

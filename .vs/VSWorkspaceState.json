@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Conifer",
-    "\\Libs",
-    "\\Shaders"
+    "\\Conifer"
   ],
-  "SelectedNode": "\\Conifer\\Taiga.h",
+  "SelectedNode": "\\Conifer\\Shader.cpp",
   "PreviewInSolutionExplorer": false
 }

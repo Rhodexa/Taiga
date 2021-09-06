@@ -161,8 +161,6 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="glstuff.h" />
-    <ClInclude Include="Logit.h" />
-    <ClInclude Include="logitext.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="resource.h" />
@@ -176,6 +174,7 @@
     <Image Include="..\..\..\..\Desktop\ico.ico" />
     <Image Include="..\..\..\..\Desktop\Rhodune\conifer.ico" />
     <Image Include="..\..\..\..\Desktop\Rhodune\coniferR4.ico" />
+    <Image Include="..\Resources\icon.ico" />
     <Image Include="icon1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

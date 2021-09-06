@@ -1,5 +1,4 @@
 #include "Shader.h"
-#include "logitext.h"
 
 Shader::Shader() {}
 Shader::~Shader() {}
@@ -10,7 +9,7 @@ Shader::ShaderTypes Shader::loadShaderFile(const std::string& file_path) {
 	std::stringstream source[2];
 
 	enum class SourceType {
-		SOURCE = -1,
+		NONE = -1,
 		VERTEX,
 		FRAGMENT
 	} source_type;
@@ -35,7 +34,10 @@ Shader::ShaderTypes Shader::loadShaderFile(const std::string& file_path) {
 
 int Shader::compileShader(GLenum type, const std::string& _file) {
 	GLuint id = glCreateShader(type);
-	if (!id) logpush::fail("GLSL Shader Creation Failed");
+	if (!id) {
+		std::cout << "Failed to create Shader" << std::endl;
+		return -1;
+	}
 	const char* file = _file.c_str();
 	glShaderSource(id, 1, &file, nullptr);
 	glCompileShader(id);
@@ -55,7 +57,8 @@ int Shader::compileShader(GLenum type, const std::string& _file) {
 			std::cout << err << std::endl;
 
 			glDeleteShader(id);
-			logpush::fail("Failed to compile Shader");
+			std::cout << "Failed to compile Shader" << std::endl;
+			return -1;
 		}
 
 	return id;
@@ -84,7 +87,8 @@ int Shader::linkShaders(const unsigned int& program, const unsigned int& vert_sh
 			glDeleteProgram(program);
 			glDeleteShader(vert_shader_id);
 			glDeleteShader(frag_shader_id);
-			logpush::fail("Failed to link Shader");
+			std::cout << "Failed to link Shader" << std::endl;
+			return -1;
 		}
 	
 	// Delete intermediates after compilation

@@ -5,8 +5,6 @@
 #include <string>
 #include "glstuff.h"
 
-
-
 class Shader {
 public:
 	Shader();
