@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Conifer"
+    "\\Conifer",
+    "\\Conifer\\res",
+    "\\Shaders"
   ],
-  "SelectedNode": "\\Conifer\\Shader.cpp",
+  "SelectedNode": "\\Conifer\\res\\conifer4.png",
   "PreviewInSolutionExplorer": false
 }

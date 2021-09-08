@@ -1,4 +1,4 @@
-#include "Object.h"
+   #include "Object.h"
 
 Object::Object() {}
 
@@ -10,10 +10,10 @@ Object::~Object() {
 
 void Object::Make(float x, float y, float w, float h) {
 	float vertices[] = {
-		x,	   y, 	  1.0, 1.0, 1.0,
-		x + w, y,	  1.0, 1.0, 1.0,
-		x + w, y + h, 1.0, 1.0, 1.0,
-		x,	   y + h, 1.0, 1.0, 1.0
+		x,	   y, 	  0.0f, 0.0f,
+		x + w, y,	  1.0f, 0.0f,
+		x + w, y + h, 1.0f, 1.0f,
+		x,	   y + h, 0.0f, 1.0f
 	};
 
 	unsigned int indices[] = {
@@ -26,10 +26,11 @@ void Object::Make(float x, float y, float w, float h) {
 
 	if (!m_VBOID) glGenBuffers(1, &m_VBOID);
 	glBindBuffer(GL_ARRAY_BUFFER, m_VBOID);
-	glBufferData(GL_ARRAY_BUFFER, 4 * 5 * sizeof(float), vertices, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), 0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), 0);
+	glBufferData(GL_ARRAY_BUFFER, 4 * 4 * sizeof(float), vertices, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), 0);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (const void*) (2 * sizeof(float)));
 	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(1);
 
 	if (!m_IBOID) glGenBuffers(1, &m_IBOID);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IBOID);

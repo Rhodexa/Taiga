@@ -1,4 +1,5 @@
 #include "Shader.h"
+#include "GLASSERT_VS_TOOL.h"
 
 Shader::Shader() {}
 Shader::~Shader() {}
@@ -109,3 +110,4 @@ int Shader::createBasicShader(const std::string& vert_path, const std::string& f
 	unsigned int cp = linkShaders(program_id, vs, fs);
 	return cp;
 }
+

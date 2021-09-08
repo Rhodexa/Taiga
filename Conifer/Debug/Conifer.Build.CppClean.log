@@ -5,8 +5,10 @@ c:\users\casa\source\repos\taiga\conifer\debug\renderer.obj
 c:\users\casa\source\repos\taiga\conifer\debug\main.obj
 c:\users\casa\source\repos\taiga\conifer\debug\shader.obj
 c:\users\casa\source\repos\taiga\conifer\debug\engine.obj
-c:\users\casa\source\repos\taiga\debug\conifer.ilk
+c:\users\casa\source\repos\taiga\conifer\debug\textures.obj
+c:\users\casa\source\repos\taiga\conifer\debug\stb_image.obj
 c:\users\casa\source\repos\taiga\debug\conifer.exe
+c:\users\casa\source\repos\taiga\debug\conifer.ilk
 c:\users\casa\source\repos\taiga\debug\conifer.pdb
 c:\users\casa\source\repos\taiga\conifer\debug\conifer.res
 c:\users\casa\source\repos\taiga\conifer\debug\conifer.tlog\cl.command.1.tlog

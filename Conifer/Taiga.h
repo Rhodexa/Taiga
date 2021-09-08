@@ -9,3 +9,5 @@
 #include "glstuff.h"
 #include "Engine.h"
 #include "Object.h"
+#include "Textures.h"
+#include "Shader.h"
