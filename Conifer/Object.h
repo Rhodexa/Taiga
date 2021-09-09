@@ -11,6 +11,8 @@ public:
 	unsigned int m_Shader = 0;
 
 public:
+	Shader program;
+
 	Object();
 	~Object();
 

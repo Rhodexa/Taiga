@@ -10,7 +10,6 @@ void main() {
 }
 
 
-
 #shadertype fragment
 #version 330 core
 

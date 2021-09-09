@@ -1,10 +1,10 @@
 #include "Shader.h"
 #include "GLASSERT_VS_TOOL.h"
 
-Shader::Shader() {}
+Shader::Shader() : m_ShaderID(0) {}
 Shader::~Shader() {}
 
-Shader::ShaderTypes Shader::loadShaderFile(const std::string& file_path) {
+Shader::Programs Shader::loadShaderFile(const std::string& file_path) {
 	std::ifstream file(file_path);
 	std::string line;
 	std::stringstream source[2];
@@ -107,7 +107,26 @@ int Shader::createBasicShader(const std::string& vert_path, const std::string& f
 	unsigned int program_id = glCreateProgram();
 	unsigned int vs = compileShader(GL_VERTEX_SHADER, vert_path);
 	unsigned int fs = compileShader(GL_FRAGMENT_SHADER, frag_path);
-	unsigned int cp = linkShaders(program_id, vs, fs);
-	return cp;
+	m_ShaderID = linkShaders(program_id, vs, fs);
+	return m_ShaderID;
 }
 
+int Shader::GetUniformLocation(const std::string& name, unsigned int m_RendererID) {
+	int location = glGetUniformLocation(m_RendererID, name.c_str());
+	std::cout << location << std::endl;
+	if (location == -1)
+		std::cout << "Taiga - Shader Manager Warning!: Uniform " << name << " doesn't exist" << std::endl;
+	return location;
+}
+
+void Shader::SetUniform1i(const std::string& name, int v0, unsigned int m_RendererID) {
+	glUniform1i(GetUniformLocation(name, m_RendererID), v0);
+}
+
+void Shader::SetUniform1f(const std::string& name, float v0) {
+	glUniform1f(GetUniformLocation(name, 0), v0);
+}
+
+void Shader::SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3) {
+	glUniform4f(GetUniformLocation(name, 0), v0, v1, v2, v3);
+}

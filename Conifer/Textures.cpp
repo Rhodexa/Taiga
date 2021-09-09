@@ -15,7 +15,7 @@ Texture::~Texture() {
 void Texture::make() {
 	stbi_set_flip_vertically_on_load(1);
 	m_TexBuffer = stbi_load(m_Path.c_str(), &m_Width, &m_Height, &m_BPP, 4);
-	std::cout << m_Width << " " << m_Height << "\n";
+	std::cout << " Texture Size " << m_Width << " " << m_Height << "\n";
 
 	glGenTextures(1, &m_TBOID);
 	std::cout << m_TBOID << "\n";

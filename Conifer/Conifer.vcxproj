@@ -152,16 +152,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Material.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="Textures.cpp" />
+    <ClCompile Include="VertexArray.cpp" />
+    <ClCompile Include="VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
     <ClInclude Include="GLASSERT_VS_TOOL.h" />
+    <ClInclude Include="Material.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="glstuff.h" />
     <ClInclude Include="Object.h" />
@@ -169,6 +173,8 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="Taiga.h" />
     <ClInclude Include="Textures.h" />
+    <ClInclude Include="VertexArray.h" />
+    <ClInclude Include="VertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Conifer.rc" />
