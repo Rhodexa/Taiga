@@ -11,9 +11,9 @@ private:
 	int m_Width, m_Height, m_BPP;
 	
 public:
-	Texture(const std::string& path);
+	Texture();
 	~Texture();
-	void make();
+	void make(const std::string& path);
 	void bind(unsigned int slot);
 	void unbind();
 };

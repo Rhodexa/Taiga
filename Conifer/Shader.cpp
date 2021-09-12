@@ -1,5 +1,5 @@
 #include "Shader.h"
-#include "GLASSERT_VS_TOOL.h"
+#include "vsglassert.h"
 
 Shader::Shader() : m_ShaderID(0) {}
 Shader::~Shader() {}
@@ -73,10 +73,10 @@ int Shader::linkShaders(const unsigned int& program, const unsigned int& vert_sh
 
 	// Error Handling
 		int linked;
-		glGetShaderiv(program, GL_LINK_STATUS, &linked);
+		glGetProgramiv(program, GL_LINK_STATUS, &linked);
 		if (linked == GL_FALSE) {
 			int length = 0;
-			glGetShaderiv(program, GL_INFO_LOG_LENGTH, &length);
+			glGetProgramiv(program, GL_INFO_LOG_LENGTH, &length);
 			char* err = (char*) alloca(length * sizeof(char));
 			glGetShaderInfoLog(program, length, &length, err);
 
@@ -111,9 +111,10 @@ int Shader::createBasicShader(const std::string& vert_path, const std::string& f
 	return m_ShaderID;
 }
 
+
+// We cn make this run way faster
 int Shader::GetUniformLocation(const std::string& name, unsigned int m_RendererID) {
 	int location = glGetUniformLocation(m_RendererID, name.c_str());
-	std::cout << location << std::endl;
 	if (location == -1)
 		std::cout << "Taiga - Shader Manager Warning!: Uniform " << name << " doesn't exist" << std::endl;
 	return location;

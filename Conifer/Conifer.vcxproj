@@ -152,19 +152,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="ConiferMain.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="stb_image.cpp" />
+    <ClCompile Include="TaigaCore.cpp" />
     <ClCompile Include="Textures.cpp" />
-    <ClCompile Include="VertexArray.cpp" />
+    <ClCompile Include="VertexAttribs.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
+    <ClCompile Include="vsglassert.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
-    <ClInclude Include="GLASSERT_VS_TOOL.h" />
+    <ClInclude Include="vsglassert.h" />
+    <ClInclude Include="IndexBuffer.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="glstuff.h" />
@@ -172,8 +176,9 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Taiga.h" />
+    <ClInclude Include="TaigaCore.h" />
     <ClInclude Include="Textures.h" />
-    <ClInclude Include="VertexArray.h" />
+    <ClInclude Include="VertexAttribs.h" />
     <ClInclude Include="VertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>

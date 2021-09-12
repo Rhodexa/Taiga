@@ -11,3 +11,7 @@
 #include "Object.h"
 #include "Textures.h"
 #include "Shader.h"
+#include "TaigaCore.h"
+#include "vsglassert.h"
+
+#define MAKE_TAIGA_APP(x) Taiga* getApplication() { x* taiga = new x; return taiga; }

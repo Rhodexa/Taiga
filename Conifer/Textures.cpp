@@ -3,24 +3,21 @@
 #include <iostream>
 
 
-Texture::Texture(const std::string& path) : m_Path(path), m_TBOID(0), m_TexBuffer(nullptr), m_Width(0), m_Height(0), m_BPP(0) {
+Texture::Texture() : m_TBOID(0), m_TexBuffer(nullptr), m_Width(0), m_Height(0), m_BPP(0) {
 	
 }
 
 Texture::~Texture() {
-	if (m_TexBuffer) stbi_image_free(m_TexBuffer);
 	glDeleteTextures(1, &m_TBOID);
 }
 
-void Texture::make() {
+void Texture::make(const std::string& path) {
+	m_Path = path;
 	stbi_set_flip_vertically_on_load(1);
 	m_TexBuffer = stbi_load(m_Path.c_str(), &m_Width, &m_Height, &m_BPP, 4);
-	std::cout << " Texture Size " << m_Width << " " << m_Height << "\n";
 
 	glGenTextures(1, &m_TBOID);
-	std::cout << m_TBOID << "\n";
-	if (!m_TBOID)
-		std::cout << "Failed to gen Texture" << "\n";
+	if (!m_TBOID) std::cout << "Failed to gen Texture" << "\n";
 	glBindTexture(GL_TEXTURE_2D, m_TBOID);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);

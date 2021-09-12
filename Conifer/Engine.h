@@ -5,20 +5,12 @@
 #include "Object.h"
 #include "Renderer.h"
 
-//enum class State {
-//	PLAY,
-//	EXIT
-//};
-
 class Engine {
-private:
+public:
 	GLFWwindow* m_Window;
-	//State m_State;
-	void draw();
-	void(*drawFunc)();
-	void(*setupFunc)();
 
 public:
+	unsigned int m_VAOID;
 	float mouseX = 0;
 	float mouseY = 0;
 
@@ -26,9 +18,10 @@ public:
 	Engine();
 	~Engine();
 
-	void init(const char*, int, int, void(*draw_func)(), void(*setup_func)());
+	void init(const char*, int, int);
 	void pollEvents();
-	void mainLoop();
 	void windowResize(GLFWwindow* window, int width, int height);
+	void clear();
+	void update();
 };
 

@@ -1,18 +1,17 @@
 #include "Engine.h"
 
 
-Engine::Engine() {
-	m_Window = nullptr;
+Engine::Engine() : m_Window(nullptr), m_VAOID(0) {
+
 }
 
 Engine::~Engine() {
 	glfwTerminate();
 }
 
-void Engine::init(const char* title, int w, int h, void(*draw_func)(), void(*setup_func)()) {
-	drawFunc = draw_func;
-	setupFunc = setup_func;
-	std::cout << "Conifer v0.1 running over Taiga Engine v0.92" << std::endl;
+void Engine::init(const char* title, int w, int h) {
+	std::cout << "Taiga Engine" << std::endl;
+
 	if (!glfwInit()) {
 		std::cout << "ERROR: GLFW failed to start" << std::endl;
 		glfwTerminate();
@@ -31,43 +30,33 @@ void Engine::init(const char* title, int w, int h, void(*draw_func)(), void(*set
 		std::cout << "ERROR: Oof... GLEW failed this time" << std::endl;
 		glfwTerminate();
 	}
-
-	std::cout << "Cool!, everything seems to be working." << std::endl;
 	
 	glfwSwapInterval(1);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-	setupFunc();
-	mainLoop();
-}
+	glGenVertexArrays(1, &m_VAOID);
+	glBindVertexArray(m_VAOID);
 
-void Engine::mainLoop() {
-	while (!glfwWindowShouldClose(m_Window)){
-		pollEvents();
-		draw();
-	}
+	std::cout << "Startup done." << std::endl;
 }
 
 void Engine::pollEvents() {
 	glfwPollEvents();
 }
 
-extern void drawLoop();
+void Engine::windowResize(GLFWwindow* window, int width, int height) {
+	glViewport(0, 0, width, height);
+}
 
-void Engine::draw() {
+void Engine::clear(){
 	glClearDepth(1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
 
-	drawFunc();
-
+void Engine::update() {
+	pollEvents();
 	int width, height;
 	glfwGetWindowSize(m_Window, &width, &height);
 	windowResize(m_Window, width, height);
 	glfwSwapBuffers(m_Window);
-}
-
-// We need to find a way to implement continous repaint while risizing.
-// Some say we should put the drawing into its own thread. I agree, but no idea how to do that just yet.
-void Engine::windowResize(GLFWwindow* window, int width, int height) {
-	glViewport(0, 0, width, height);
 }

@@ -1,42 +1,28 @@
 #include "Object.h"
-#include "VertexBuffer.h"
 
 Object::Object() {}
+Object::~Object() {}
 
-Object::~Object() {
-	if (!m_IBOID) glDeleteBuffers(1, &m_IBOID);
-	if (!m_VAOID) glDeleteBuffers(1, &m_VAOID);
-}
-
-void Object::Make(float x, float y, float w, float h) {
-	float vertices[] = {
-		x,	   y, 	  0.0f, 0.0f,
+void Object::make(float x, float y, float w, float h) {
+	float vertices[16] = {
+		x,     y,	  0.0f, 0.0f,
 		x + w, y,	  1.0f, 0.0f,
 		x + w, y + h, 1.0f, 1.0f,
-		x,	   y + h, 0.0f, 1.0f
+		x,     y + h, 0.0f, 1.0f
 	};
+	
+	vbo.make(vertices, 16);
+	vaa.append(2);
+	vaa.append(2);
+	vaa.build(vbo);
+	ibo.make(indices, 6);
 
-	unsigned int indices[] = {
-		0, 1, 2,
-		2, 3, 0
-	};
+	Shader::Programs source = shader.loadShaderFile("../Shaders/basic_shader.shader");
+	m_ShaderID = shader.createBasicShader(source.vertex_shader, source.fragment_shader);
 
-	if(!m_VAOID) glGenVertexArrays(1, &m_VAOID);
-	glBindVertexArray(m_VAOID);
-
-	VertexBuffer buffer;
-	buffer.make(vertices);
-
-
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), 0);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (const void*) (2 * sizeof(float)));
-	glEnableVertexAttribArray(0);
-	glEnableVertexAttribArray(1);
-
-	if (!m_IBOID) glGenBuffers(1, &m_IBOID);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IBOID);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
-
-	Shader::Programs source = program.loadShaderFile("../Shaders/basic_shader.shader");
-	m_Shader = program.createBasicShader(source.vertex_shader, source.fragment_shader);
+	tex.make("res/conifer_logo.png");
+	tex.bind(0);
+		
+	glUseProgram(m_ShaderID);
+	shader.SetUniform1i("u_Texture", 0, m_ShaderID);
 }
