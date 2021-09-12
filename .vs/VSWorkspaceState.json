@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Conifer",
+    "\\Libs\\GLM",
     "\\Shaders"
   ],
-  "SelectedNode": "\\Shaders\\basic_shader.shader",
+  "SelectedNode": "\\Conifer\\Material.cpp",
   "PreviewInSolutionExplorer": false
 }

@@ -112,22 +112,29 @@ int Shader::createBasicShader(const std::string& vert_path, const std::string& f
 }
 
 
-// We cn make this run way faster
-int Shader::GetUniformLocation(const std::string& name, unsigned int m_RendererID) {
-	int location = glGetUniformLocation(m_RendererID, name.c_str());
+// We can make this run way faster
+// Here's a ToDo list for ya: We need a system that can look up for uniforms during compilation/parsing and store them.
+// Then, once the Shader gets compiled, it should ask OpenGL the location of all those uniforms and store a relation array of Names -> Locations
+// This way, we can just acces uniforms instead of asking OGL where they ara every frame. It's not so complicated, Good luck! 
+int Shader::GetUniformLocation(const std::string& name) {
+	int location = glGetUniformLocation(m_ShaderID, name.c_str());
 	if (location == -1)
 		std::cout << "Taiga - Shader Manager Warning!: Uniform " << name << " doesn't exist" << std::endl;
 	return location;
 }
 
-void Shader::SetUniform1i(const std::string& name, int v0, unsigned int m_RendererID) {
-	glUniform1i(GetUniformLocation(name, m_RendererID), v0);
+void Shader::SetUniform1i(const std::string& name, int v0) {
+	glUniform1i(GetUniformLocation(name), v0);
 }
 
 void Shader::SetUniform1f(const std::string& name, float v0) {
-	glUniform1f(GetUniformLocation(name, 0), v0);
+	glUniform1f(GetUniformLocation(name), v0);
 }
 
 void Shader::SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3) {
-	glUniform4f(GetUniformLocation(name, 0), v0, v1, v2, v3);
+	glUniform4f(GetUniformLocation(name), v0, v1, v2, v3);
+}
+
+void Shader::SetUniformMat4f(const std::string& name, const glm::mat4& mat) {
+	glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, &mat[0][0]);
 }

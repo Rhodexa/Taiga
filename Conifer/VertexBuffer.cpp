@@ -8,7 +8,7 @@ VertexBuffer::~VertexBuffer() {
 unsigned int VertexBuffer::make(const float* buffer, unsigned int count) {
 	if (!ID) glGenBuffers(1, &ID);
 	glBindBuffer(GL_ARRAY_BUFFER, ID);
-	glBufferData(GL_ARRAY_BUFFER, count * sizeof(float), buffer, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, count * sizeof(float), buffer, GL_DYNAMIC_DRAW);
 	return ID;
 }
 

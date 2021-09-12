@@ -1,3 +1,2 @@
 ﻿  ConiferMain.cpp
-C:\Users\Casa\source\repos\Taiga\Conifer\ConiferMain.cpp(26,32): warning C4305: 'argument': truncation from 'double' to 'float'
   Conifer.vcxproj -> C:\Users\Casa\source\repos\Taiga\Debug\Conifer.exe

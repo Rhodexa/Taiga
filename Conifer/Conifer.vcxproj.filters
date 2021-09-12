@@ -54,6 +54,9 @@
     <ClCompile Include="vsglassert.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Gmath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -96,6 +99,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vsglassert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Gmath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

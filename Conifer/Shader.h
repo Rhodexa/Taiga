@@ -4,6 +4,7 @@
 #include <sstream>
 #include <string>
 #include "glstuff.h"
+#include "glm.hpp"
 
 class Shader {
 private:
@@ -23,9 +24,10 @@ public:
 	int createBasicShader(const std::string& vert_path, const std::string& frag_path);
 	int linkShaders(const unsigned int& program, const unsigned int& vert_shader_id, const unsigned int& frag_shader_id);
 
-	int  GetUniformLocation(const std::string& name, unsigned int m_RendererID);
-	void SetUniform1i(const std::string& name, int v0, unsigned int m_RendererID);
+	int  GetUniformLocation(const std::string& name);
+	void SetUniform1i(const std::string& name, int v0);
 	void SetUniform1f(const std::string& name, float v0);
 	void SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3);
+	void SetUniformMat4f(const std::string& name, const glm::mat4&);
 };
 

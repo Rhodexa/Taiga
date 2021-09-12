@@ -13,5 +13,7 @@
 #include "Shader.h"
 #include "TaigaCore.h"
 #include "vsglassert.h"
+#include "glm.hpp"
+#include "gtc/matrix_transform.hpp"
 
 #define MAKE_TAIGA_APP(x) Taiga* getApplication() { x* taiga = new x; return taiga; }

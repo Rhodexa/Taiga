@@ -24,5 +24,5 @@ void Object::make(float x, float y, float w, float h) {
 	tex.bind(0);
 		
 	glUseProgram(m_ShaderID);
-	shader.SetUniform1i("u_Texture", 0, m_ShaderID);
+	shader.SetUniform1i("u_Texture", 0);
 }

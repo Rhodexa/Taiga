@@ -1,4 +1,6 @@
 #include "Taiga.h"
+//#include "Gmath.h" We don't use our custom Algebra lib anymore, we switched to GLM now, cause... let's be honest, it's far more advanced than ours. 
+// But we ARE gonna make our own sooner or later!
 
 class Conifer : public Taiga {
 public:
@@ -11,7 +13,7 @@ public:
 // custom app variables go here
 public:
 	Renderer renderer;
-	Object obj;
+	Object obj;	
 };
 
 // Tell Taiga this is the main frame we're gonna be working on.
@@ -23,7 +25,8 @@ MAKE_TAIGA_APP(Conifer);
 
 // This runs once
 void Conifer::setup() {
-	obj.make(-0.35, -0.5, 0.7, 1.0);
+	obj.make(-100, -100, 200, 200);
+	
 }
 
 
@@ -35,6 +38,12 @@ void Conifer::draw() {
 	//	Like renderer.draw(obj); or renrer.draw(obj, material);
 	// An Object is a collection of buffers, it takes vertex data and material data, then puts everything into a single class -> Object. 
 	// But for now, an Object is a rectangle. xd
+
+	int w, h;
+	glfwGetWindowSize(m_Window, &w, &h);
+	glm::mat4 proj = glm::ortho((double)-w / 2, (double)w / 2, (double)-h / 2, (double)h / 2, -1.0, 1.0);
+	obj.shader.SetUniformMat4f("proj", proj);
+
 	renderer.draw(obj.vbo, obj.ibo, obj.vaa, obj.m_ShaderID);
 
 	// SUPER basic error capturing... just for testing
