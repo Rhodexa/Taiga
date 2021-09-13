@@ -17,6 +17,7 @@ Shader::Programs Shader::loadShaderFile(const std::string& file_path) {
 
 	unsigned int line_n = 0;
 	while (getline(file, line)) {
+		// parse shader types
 		if (line.find("#shadertype") != std::string::npos) {
 			if (line.find("vertex") != std::string::npos)
 				source_type = SourceType::VERTEX;
@@ -27,6 +28,21 @@ Shader::Programs Shader::loadShaderFile(const std::string& file_path) {
 		}
 		else 
 			source[(int) source_type] << line << "\n";
+
+		// Get all possible uniforms existing in the shader file
+		std::string::size_type start = line.find("uniform", 0);
+		if (line.find("uniform") != std::string::npos) {
+			start += 7;
+			while (line[start] == ' ')	start++;
+			std::string::size_type end = start;
+			while (line[end] != ' ') end++;
+			//m_uniforms_types.push_back(line.substr(start, end - start)); 
+			start = end;
+			while (line[start] == ' ')	start++;
+			while (line[end] != ';') end++;
+			m_uniforms_names.push_back(line.substr(start, end - start));
+		}
+
 		line_n++;
 	}
 
@@ -103,25 +119,49 @@ int Shader::linkShaders(const unsigned int& program, const unsigned int& vert_sh
 	return program;
 }
 
-int Shader::createBasicShader(const std::string& vert_path, const std::string& frag_path) {
+void Shader::loadUniformLocations() {
+	for (int i = 0; i < m_uniforms_names.size(); i++) {
+		int location = glGetUniformLocation(m_ShaderID, m_uniforms_names[i].c_str());
+		m_uniforms_locat.push_back(location);
+		m_uniforms_map.insert(std::pair<std::string, int>(m_uniforms_names[i], location));
+	}
+}
+
+int Shader::createBasicShader(const std::string& vert_source, const std::string& frag_source) {
 	unsigned int program_id = glCreateProgram();
-	unsigned int vs = compileShader(GL_VERTEX_SHADER, vert_path);
-	unsigned int fs = compileShader(GL_FRAGMENT_SHADER, frag_path);
+	unsigned int vs = compileShader(GL_VERTEX_SHADER, vert_source);
+	unsigned int fs = compileShader(GL_FRAGMENT_SHADER, frag_source);
 	m_ShaderID = linkShaders(program_id, vs, fs);
+	loadUniformLocations();
 	return m_ShaderID;
 }
 
-
-// We can make this run way faster
-// Here's a ToDo list for ya: We need a system that can look up for uniforms during compilation/parsing and store them.
-// Then, once the Shader gets compiled, it should ask OpenGL the location of all those uniforms and store a relation array of Names -> Locations
-// This way, we can just acces uniforms instead of asking OGL where they ara every frame. It's not so complicated, Good luck! 
-int Shader::GetUniformLocation(const std::string& name) {
-	int location = glGetUniformLocation(m_ShaderID, name.c_str());
-	if (location == -1)
-		std::cout << "Taiga - Shader Manager Warning!: Uniform " << name << " doesn't exist" << std::endl;
-	return location;
+int Shader::makeShader(const std::string& file_path) {
+	Shader::Programs programs = loadShaderFile(file_path);
+	unsigned int program_id = glCreateProgram();
+	unsigned int vs = compileShader(GL_VERTEX_SHADER, programs.vertex_shader);
+	unsigned int fs = compileShader(GL_FRAGMENT_SHADER, programs.fragment_shader);
+	m_ShaderID = linkShaders(program_id, vs, fs);
+	loadUniformLocations();
+	return m_ShaderID;
 }
+
+int Shader::GetUniformLocation(const std::string& name) const {
+	glUseProgram(m_ShaderID);
+	auto location = m_uniforms_map.find(name);
+	if (location == m_uniforms_map.end()) {
+		std::cout << "Taiga - Shader Manager Warning!: Uniform \'" << name << "\' doesn't exist" << std::endl;
+		return -1;
+	}
+	return location->second;
+}
+
+int Shader::GetUniformLocation(const unsigned int index) const {
+	glUseProgram(m_ShaderID);
+	return m_uniforms_locat[index];
+}
+
+
 
 void Shader::SetUniform1i(const std::string& name, int v0) {
 	glUniform1i(GetUniformLocation(name), v0);

@@ -4,9 +4,7 @@ extern Taiga* getApplication();
 
 Taiga::Taiga() : windowName("Taiga Engine v0.9.34.120921") {std::cout << "Taiga Core Created!\n";}
 Taiga::Taiga(const char* window_name) : windowName(window_name) {std::cout << "Taiga Core Created!\n";}
-
-Taiga::~Taiga() {
-}
+Taiga::~Taiga() {}
 
 #ifndef TGA_LEMME_DO_IT_MY_WAY
 int main(int argc, char** args) {
@@ -20,6 +18,7 @@ int main(int argc, char** args) {
 		taiga->update();
 	}
 	delete taiga;
+	glfwTerminate();
 	return 0;
 }
 #endif

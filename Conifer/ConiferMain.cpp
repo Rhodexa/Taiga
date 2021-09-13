@@ -13,7 +13,8 @@ public:
 // custom app variables go here
 public:
 	Renderer renderer;
-	Object obj;	
+	Object obj;
+	Object obj2;
 	double x = 0, y = 0;
 	double modelx = 0, modely = 0;
 	int w = 0, h = 0;
@@ -29,15 +30,14 @@ MAKE_TAIGA_APP(Conifer);
 
 // This runs once
 void Conifer::setup() {
-	obj.make(-100, -100, 200, 200);
-	
+	obj.make(-100, -100, 200, 200);	
+	obj2.make(-100, -100, 200, 200);
 }
 
 
 // Conifer inherits Taiga. setup() and draw() are empty in there, but we have overriden them in Conifer.
 // This runs at 60FPS (I guess, we gotta test that)
 void Conifer::draw() {
-
 	// This is just a quick app that will show the new Coifer logo following the cursor.
 			// get cursor
 			glfwGetCursorPos(m_Window, &x, &y);
@@ -56,17 +56,25 @@ void Conifer::draw() {
 				modelx,  modely, 0.0, 1.0
 			};
 
+			glm::mat4 model2 = {
+				cos(a/4),  0.0,  sin(a/4), 0.0,
+				0.0,	   1.0,		  0.0, 0.0,
+				-sin(a/4), 0.0,  cos(a/4), 0.0,
+				0.0,  0.0, 0.0, 1.0
+			};
+
+
 			// pass the matrix to our shader
 			obj.shader.SetUniformMat4f("model", model);
-
+			obj2.shader.SetUniformMat4f("model", model2);
 
 			// get window size
 			glfwGetWindowSize(m_Window, &w, &h);
 			// prooject to window size
-			glm::mat4 proj = glm::ortho((double)-w / 2, (double)w / 2, (double)-h / 2, (double)h / 2, -1.0, 1.0);
+			glm::mat4 proj = glm::ortho((double)-w / 2, (double)w / 2, (double)-h / 2, (double)h / 2, -100.0, 100.0);
 			// pass projection matrix to shader
 			obj.shader.SetUniformMat4f("proj", proj);
-
+			obj2.shader.SetUniformMat4f("proj", proj);
 
 
 	// I think it would be nice if this functions actaully takes an Object class as an argument, plus a material. 
@@ -74,7 +82,10 @@ void Conifer::draw() {
 	//	Like renderer.draw(obj); or renrer.draw(obj, material);
 	// An Object is a collection of buffers, it takes vertex data and material data, then puts everything into a single class -> Object. 
 	// But for now, an Object is a rectangle. xd
+
+
 	renderer.draw(obj.vbo, obj.ibo, obj.vaa, obj.m_ShaderID);
+	renderer.draw(obj2.vbo, obj2.ibo, obj2.vaa, obj2.m_ShaderID);
 
 	// SUPER basic error capturing... just for testing
 	// we could delete this, it's actually helpless... xD

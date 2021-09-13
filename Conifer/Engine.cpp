@@ -32,8 +32,10 @@ void Engine::init(const char* title, int w, int h) {
 	}
 	
 	glfwSwapInterval(1);
+	
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
 	glGenVertexArrays(1, &m_VAOID);
 	glBindVertexArray(m_VAOID);
 
