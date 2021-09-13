@@ -4,18 +4,14 @@
 layout(location = 0) in vec4 vertexPos;
 layout(location = 1) in vec2 u_tex_coord;
 
+uniform mat4 model;
 uniform mat4 proj;
 
 out vec2 v_tex_coord;
 void main() {
-	gl_Position = proj * vertexPos;
+	gl_Position = proj * model * vertexPos;
 	v_tex_coord = u_tex_coord;
 }
-
-
-
-
-
 
 
 
