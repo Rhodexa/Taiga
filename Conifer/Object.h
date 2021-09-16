@@ -8,14 +8,9 @@
 
 class Object {
 public:
-	unsigned int m_VBOID = 0;
-	unsigned int m_IBOID = 0;
-	unsigned int m_ShaderID = 0;
 	VertexBuffer vbo;
 	IndexBuffer ibo;
 	VertexLayout vaa;
-	Shader shader;
-	Texture tex;
 
 public:
 

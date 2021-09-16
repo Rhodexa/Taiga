@@ -151,8 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Engine.cpp" />
-    <ClCompile Include="Gmath.cpp" />
     <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Shader.cpp" />
@@ -167,8 +167,9 @@
     <ClCompile Include="vsglassert.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Engine.h" />
-    <ClInclude Include="Gmath.h" />
+    <ClInclude Include="gmath.h" />
     <ClInclude Include="vsglassert.h" />
     <ClInclude Include="IndexBuffer.h" />
     <ClInclude Include="Material.h" />

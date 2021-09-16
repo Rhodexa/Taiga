@@ -20,12 +20,4 @@ void Object::make(float x, float y, float w, float h) {
 	vaa.append(2);				// vertex components layout: Texture Coordinates U, V at location 1
 	vaa.build(vbo);				// load the vertex components to the GPU
 	ibo.make(indices, 6);	// Load the index buffer to the GPU
-
-	m_ShaderID = shader.makeShader("../Shaders/basic_shader.shader");
-
-	tex.make("res/conifer_logo.png");
-	tex.bind(0);
-		
-	glUseProgram(m_ShaderID);
-	shader.SetUniform1i("u_Texture", 0);
 }

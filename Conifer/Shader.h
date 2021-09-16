@@ -30,10 +30,9 @@ public:
 	int linkShaders(const unsigned int& program, const unsigned int& vert_shader_id, const unsigned int& frag_shader_id);
 	void loadUniformLocations();
 
-
-	int createBasicShader(const std::string& vert_source, const std::string& frag_source);
-	int makeShader(const std::string& file_path);
-
+	void make(const std::string& file_path);
+	void bind();
+	void unbind();
 
 	int  GetUniformLocation(const std::string& name) const;
 	int  GetUniformLocation(const unsigned int index) const;

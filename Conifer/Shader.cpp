@@ -127,24 +127,24 @@ void Shader::loadUniformLocations() {
 	}
 }
 
-int Shader::createBasicShader(const std::string& vert_source, const std::string& frag_source) {
-	unsigned int program_id = glCreateProgram();
-	unsigned int vs = compileShader(GL_VERTEX_SHADER, vert_source);
-	unsigned int fs = compileShader(GL_FRAGMENT_SHADER, frag_source);
-	m_ShaderID = linkShaders(program_id, vs, fs);
-	loadUniformLocations();
-	return m_ShaderID;
-}
 
-int Shader::makeShader(const std::string& file_path) {
+void Shader::make(const std::string& file_path) {
 	Shader::Programs programs = loadShaderFile(file_path);
 	unsigned int program_id = glCreateProgram();
 	unsigned int vs = compileShader(GL_VERTEX_SHADER, programs.vertex_shader);
 	unsigned int fs = compileShader(GL_FRAGMENT_SHADER, programs.fragment_shader);
 	m_ShaderID = linkShaders(program_id, vs, fs);
 	loadUniformLocations();
-	return m_ShaderID;
 }
+
+void Shader::bind() {
+	glUseProgram(m_ShaderID);
+}
+
+void Shader::unbind() {
+	glUseProgram(0);
+}
+
 
 int Shader::GetUniformLocation(const std::string& name) const {
 	glUseProgram(m_ShaderID);

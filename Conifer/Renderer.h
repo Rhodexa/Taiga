@@ -1,12 +1,11 @@
 #pragma once
 #include "glstuff.h"
-#include "Shader.h"
-#include "VertexBuffer.h"
-#include "VertexAttribs.h"
-#include "IndexBuffer.h"
+#include "Object.h"
+#include "Material.h"
 
 class Renderer {
 public:
-	void draw(VertexBuffer& vbo, IndexBuffer& ibo, VertexLayout& vaa, unsigned int shader) const;
+	// void draw(VertexBuffer& vbo, IndexBuffer& ibo, VertexLayout& vaa, Shader& shader) const;
+	void draw(Object& obj, Material& mat) const;
 };
 
