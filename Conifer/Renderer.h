@@ -9,3 +9,4 @@ public:
 	void draw(Object& obj, Material& mat) const;
 };
 
+
