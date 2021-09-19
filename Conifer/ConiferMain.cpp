@@ -14,13 +14,11 @@ public:
 public:
 	Renderer renderer;
 	Material material;
-	Material material2;
+	Camera camera;
 	Object obj;
-	Object obj2;
 	double x = 0, y = 0;
-	double modelx = 0, modely = 0;
 	int w = 0, h = 0;
-	double a = 0;
+	glm::vec3 cam_pos = { 0.0, 0.0, -500.0 };
 };
 
 // Tell Taiga this is the main frame we're gonna be working on.
@@ -33,70 +31,76 @@ MAKE_TAIGA_APP(Conifer);
 // This runs once
 void Conifer::setup() {
 	obj.make(-100, -100, 200, 200);	
-	obj2.make(-100, -100, 200, 200);
 	material.make("../Shaders/basic_shader.shader", "res/conifer_logo.png");
-	material2.make("../Shaders/basic_shader.shader", "res/conifer4.png");
+	
+	camera.setPosition(cam_pos);
 }
+
 
 
 // Conifer inherits Taiga. setup() and draw() are empty in there, but we have overriden them in Conifer.
 // This runs at 60FPS (I guess, we gotta test that)
 void Conifer::draw() {
 	// This is just a quick app that will show the new Coifer logo following the cursor.
-			// get cursor
-			glfwGetCursorPos(m_Window, &x, &y);
-	
-			// do the animation
-			a = modelx*modely;
-			modelx += ((x - w / 2) - modelx) * 0.1;
-			modely += ((h / 2 - y) - modely) * 0.1;
-			a = (modelx*modely - a)*0.0005;
-
-			// translate and rotate with this contraption i made
-			glm::mat4 model = {
-				cos(a), -sin(a), 0.0, 0.0, 
-				sin(a),  cos(a), 0.0, 0.0,
-				0.0,	 0.0,    1.0, 0.0,
-				modelx,  modely, 0.0, 1.0
-			};
-
-			glm::mat4 model2 = {
-				cos(a/4),  0.0,  sin(a/4), 0.0,
-				0.0,	   1.0,		  0.0, 0.0,
-				-sin(a/4), 0.0,  cos(a/4), 0.0,
-				0.0,  0.0, 0.0, 1.0
-			};
+		// get cursor
+		glfwGetCursorPos(m_Window, &x, &y);
+		// get window size
+		glfwGetWindowSize(m_Window, &w, &h);
+		x = x - w / 2;
+		y = -y + h / 2;
 
 
-			// pass the matrix to our shader
-			material.shader.SetUniformMat4f("model", model);
-			material2.shader.SetUniformMat4f("model", model2);
+		// BASIC input capture
+		if (glfwGetKey(m_Window, GLFW_KEY_W)) {
+			cam_pos.z += 10;
+			camera.setPosition(cam_pos);
+		};
+		if (glfwGetKey(m_Window, GLFW_KEY_S)) {
+			cam_pos.z -= 10;
+			camera.setPosition(cam_pos);
+		};
+		if (glfwGetKey(m_Window, GLFW_KEY_A)) {
+			cam_pos.x -= 10;
+			camera.setPosition(cam_pos);
+		};
+		if (glfwGetKey(m_Window, GLFW_KEY_D)) {
+			cam_pos.x += 10;
+			camera.setPosition(cam_pos);
+		};
+		if (glfwGetKey(m_Window, GLFW_KEY_Q)) {
+			cam_pos.y -= 10;
+			camera.setPosition(cam_pos);
+		};
+		if (glfwGetKey(m_Window, GLFW_KEY_E)) {
+			cam_pos.y += 10;
+			camera.setPosition(cam_pos);
+		};
 
-			// get window size
-			glfwGetWindowSize(m_Window, &w, &h);
-			// prooject to window size
-			glm::mat4 proj = glm::ortho((double)-w / 2, (double)w / 2, (double)-h / 2, (double)h / 2, -100.0, 100.0);
-			// pass projection matrix to shader
-			material.shader.SetUniformMat4f("proj", proj);
-			material2.shader.SetUniformMat4f("proj", proj);
 
 
-	// I think it would be nice if this functions actaully takes an Object class as an argument, plus a material. 
-	// Altough Materials could be an intrinsict property of Objects themselves.
-	//	Like renderer.draw(obj); or renrer.draw(obj, material);
-	// An Object is a collection of buffers, it takes vertex data and material data, then puts everything into a single class -> Object. 
-	// But for now, an Object is a rectangle. xd
+
+
+
+
+		glm::vec3 cam_dir = { float(x), float(y), -cam_pos.z};
+		//camera.setTarget(cam_dir);
+		camera.setOrientation(cam_dir);
+
+		glm::mat4 proj = glm::perspectiveLH(1.2, double(w)/double(h), -1.0, 1.0);
+		glm::mat4 view = camera.view_matrix;
+
+		glm::mat4 model = {
+			1.0, 0.0, 0.0, 0.0, 
+			0.0, 1.0, 0.0, 0.0,
+			0.0, 0.0, 1.0, 0.0,
+			0.0, 0.0, 0.0, 1.0
+		};
+
+		// pass the matrix to our shader
+		material.shader.SetUniformMat4f("MVP", proj * view * model);
 
 	renderer.draw(obj,  material);
-	renderer.draw(obj2, material2);
-
-	// SUPER basic error capturing... just for testing
-	// we could delete this, it's actually helpless... xD
-	GLenum err = glGetError();
-	if (err != GL_NO_ERROR)
-		std::cout << err << std::endl;
 }
-
 
 
 

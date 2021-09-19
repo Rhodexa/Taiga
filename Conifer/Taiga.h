@@ -6,13 +6,16 @@
 
 #include <string>
 #include <iostream>
+#include "vsglassert.h"
+
 #include "glstuff.h"
+#include "gmath.h"
 #include "Engine.h"
 #include "Object.h"
 #include "Textures.h"
 #include "Shader.h"
+#include "Camera.h"
+
 #include "TaigaCore.h"
-#include "vsglassert.h"
-#include "gmath.h"
 
 #define MAKE_TAIGA_APP(x) Taiga* getApplication() { x* taiga = new x; return taiga; }
