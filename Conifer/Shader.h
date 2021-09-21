@@ -34,12 +34,13 @@ public:
 	void bind();
 	void unbind();
 
-	int  GetUniformLocation(const std::string& name) const;
-	int  GetUniformLocation(const unsigned int index) const;
-	void SetUniform1i(const std::string& name, int v0);
-	void SetUniform1f(const std::string& name, float v0);
-	void SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3);
-	void SetUniformMat4f(const std::string& name, const glm::mat4&);
+	int  getUniformLocation(const std::string& name) const;
+	int  getUniformLocation(const unsigned int index) const;
+	void setUniform1i(const std::string& name, int v0);
+	void setUniform1f(const std::string& name, float v0);
+	void setUniform4f(const std::string& name, float v0, float v1, float v2, float v3);
+	void setUniformMat4f(const std::string& name, const glm::mat4&);
+	void setUniformMat3f(const std::string& name, const glm::mat3&);
 };
 
 

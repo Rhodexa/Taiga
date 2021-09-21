@@ -1,5 +1,6 @@
 #include "VertexBuffer.h"
 #include <iostream>
+
 VertexBuffer::VertexBuffer() : ID(0) {}
 VertexBuffer::~VertexBuffer() {
 	glDeleteBuffers(1, &ID);

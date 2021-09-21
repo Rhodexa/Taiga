@@ -2,7 +2,6 @@
 #include <string>
 #include <iostream>
 #include "glstuff.h"
-#include "Object.h"
 #include "Renderer.h"
 
 class Engine {

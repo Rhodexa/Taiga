@@ -15,6 +15,7 @@
 #include "Textures.h"
 #include "Shader.h"
 #include "Camera.h"
+#include "Sprite.h"
 
 #include "TaigaCore.h"
 

@@ -7,15 +7,19 @@ class Texture {
 private:
 	std::string m_Path;
 	unsigned int m_TBOID;
-	unsigned char* m_TexBuffer;
 	int m_Width, m_Height, m_BPP;
-	
+
+public:
+	unsigned char* tex_buffer;
+
 public:
 	Texture();
 	~Texture();
 	void make(const std::string& path);
+	void free();
 	void bind(unsigned int slot);
 	void unbind();
+	unsigned int getID() const;
 };
 
 

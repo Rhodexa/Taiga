@@ -12,7 +12,6 @@ unsigned int IndexBuffer::make(const unsigned int* buffer, unsigned int count) {
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(buffer), buffer, GL_STATIC_DRAW);
 	return ID;
 }
-
 void IndexBuffer::bind() const {
 	glBindBuffer(GL_ARRAY_BUFFER, ID);
 }

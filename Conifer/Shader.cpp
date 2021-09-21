@@ -4,6 +4,7 @@
 Shader::Shader() : m_ShaderID(0) {}
 Shader::~Shader() {}
 
+// SHADER LOADING
 Shader::Programs Shader::loadShaderFile(const std::string& file_path) {
 	std::ifstream file(file_path);
 	std::string line;
@@ -18,7 +19,7 @@ Shader::Programs Shader::loadShaderFile(const std::string& file_path) {
 	unsigned int line_n = 0;
 	while (getline(file, line)) {
 		// parse shader types
-		if (line.find("#shadertype") != std::string::npos) {
+		if (line.find("!shadertype") != std::string::npos) {
 			if (line.find("vertex") != std::string::npos)
 				source_type = SourceType::VERTEX;
 			else if (line.find("fragment") != std::string::npos)
@@ -49,6 +50,8 @@ Shader::Programs Shader::loadShaderFile(const std::string& file_path) {
 	return { source[0].str(), source[1].str() };
 }
 
+
+// SHADER COMPILATION
 int Shader::compileShader(GLenum type, const std::string& _file) {
 	GLuint id = glCreateShader(type);
 	if (!id) {
@@ -119,8 +122,12 @@ int Shader::linkShaders(const unsigned int& program, const unsigned int& vert_sh
 	return program;
 }
 
+
+// UNIFORMS PRELOAD
+// Once the shader is compiled, we ask OpenGL for all Uniforms we've seen during loading.
+// Then we can change them directly without having to query where they are everytime we want them.
 void Shader::loadUniformLocations() {
-	for (int i = 0; i < m_uniforms_names.size(); i++) {
+	for (unsigned int i = 0; i < m_uniforms_names.size(); i++) {
 		int location = glGetUniformLocation(m_ShaderID, m_uniforms_names[i].c_str());
 		m_uniforms_locat.push_back(location);
 		m_uniforms_map.insert(std::pair<std::string, int>(m_uniforms_names[i], location));
@@ -128,6 +135,8 @@ void Shader::loadUniformLocations() {
 }
 
 
+// SHADER CREATION
+// makes a basic Vertex-Fragment shader based on a single tglsl file
 void Shader::make(const std::string& file_path) {
 	Shader::Programs programs = loadShaderFile(file_path);
 	unsigned int program_id = glCreateProgram();
@@ -146,7 +155,10 @@ void Shader::unbind() {
 }
 
 
-int Shader::GetUniformLocation(const std::string& name) const {
+// UNIFORM UTILITIES
+// Ask our uniform list where a uniform is based on it's name.
+// we could also acces them by found index if you feel brave enough... that will give us better performace for sure.
+int Shader::getUniformLocation(const std::string& name) const {
 	glUseProgram(m_ShaderID);
 	auto location = m_uniforms_map.find(name);
 	if (location == m_uniforms_map.end()) {
@@ -156,26 +168,30 @@ int Shader::GetUniformLocation(const std::string& name) const {
 	return location->second;
 }
 
-int Shader::GetUniformLocation(const unsigned int index) const {
+int Shader::getUniformLocation(const unsigned int index) const {
 	glUseProgram(m_ShaderID);
 	return m_uniforms_locat[index];
 }
 
 
 
-void Shader::SetUniform1i(const std::string& name, int v0) {
-	glUniform1i(GetUniformLocation(name), v0);
+// PUBLIC UNIFORM HANDLERS
+void Shader::setUniform1i(const std::string& name, int v0) {
+	glUniform1i(getUniformLocation(name), v0);
 }
 
-void Shader::SetUniform1f(const std::string& name, float v0) {
-	glUniform1f(GetUniformLocation(name), v0);
+void Shader::setUniform1f(const std::string& name, float v0) {
+	glUniform1f(getUniformLocation(name), v0);
 }
 
-void Shader::SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3) {
-	glUniform4f(GetUniformLocation(name), v0, v1, v2, v3);
+void Shader::setUniform4f(const std::string& name, float v0, float v1, float v2, float v3) {
+	glUniform4f(getUniformLocation(name), v0, v1, v2, v3);
 }
 
-void Shader::SetUniformMat4f(const std::string& name, const glm::mat4& mat) {
-	glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, &mat[0][0]);
+void Shader::setUniformMat4f(const std::string& name, const glm::mat4& mat) {
+	glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, &mat[0][0]);
 }
 
+void Shader::setUniformMat3f(const std::string& name, const glm::mat3& mat) {
+	glUniformMatrix3fv(getUniformLocation(name), 1, GL_FALSE, &mat[0][0]);
+}

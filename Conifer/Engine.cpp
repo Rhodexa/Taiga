@@ -1,10 +1,7 @@
 #include "Engine.h"
+#include "Window.h"
 
-
-Engine::Engine() : m_Window(nullptr), m_VAOID(0) {
-
-}
-
+Engine::Engine() : m_Window(nullptr), m_VAOID(0) {}
 Engine::~Engine() {
 	glfwTerminate();
 }

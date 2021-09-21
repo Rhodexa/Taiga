@@ -15,3 +15,12 @@ void Renderer::draw(Object& obj, Material& mat) const {
 	mat.bind();
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
+
+void Renderer::draw(Sprite& obj, Shader& shader) const {
+	obj.vbo.bind();
+	obj.vaa.bind(obj.vbo);
+	obj.ibo.bind();
+	shader.bind();
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+}
+

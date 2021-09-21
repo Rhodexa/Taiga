@@ -45,9 +45,3 @@ void Camera::setTarget(glm::vec3& target) {
 	m_Orientation = glm::normalize(target - m_Position);
 	set();
 }
-
-/*
-void Camera::rotate(float angle) {
-	m_Orientation 
-}
-*/

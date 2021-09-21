@@ -15,7 +15,6 @@ public:
 	Camera();
 	~Camera();
 
-	void set(glm::vec3& position, glm::vec3& target, glm::vec3& up);
 	void set();
 	void setPosition(glm::vec3& pos);
 	void setTilt(glm::vec3& tilt);

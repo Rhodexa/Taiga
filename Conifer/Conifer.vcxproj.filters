@@ -1,139 +1,182 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
+    <Filter Include="_Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Taiga">
+      <UniqueIdentifier>{280a938a-d2da-4151-b263-f02b51e1568b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Taiga\_core_stuff">
+      <UniqueIdentifier>{55158345-50c9-4e83-aad5-ec0c03273314}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Taiga\_core_stuff\headers">
+      <UniqueIdentifier>{cae8508c-a77a-4263-be8c-11dcc49b2c83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Taiga\_core_stuff\sources">
+      <UniqueIdentifier>{d9d997ce-7390-405a-815a-3b86922384e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{d050cae5-7bbc-4906-9a69-1dd184d8e8f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Taiga\_utility">
+      <UniqueIdentifier>{e5d68646-fd31-4c7a-87c5-5ef917a07921}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Taiga\_utility\headers">
+      <UniqueIdentifier>{f92a86d9-c678-4a8c-924a-5b094230e26c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Taiga\_utility\sources">
+      <UniqueIdentifier>{2a490911-53b9-42a5-943d-1d2e6bce4a1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Taiga\_renderer">
+      <UniqueIdentifier>{ca515297-b00c-47a0-bb4d-a92708ddde84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Taiga\_renderer\headers">
+      <UniqueIdentifier>{d5c9b298-b3c4-4a8f-b0c7-45bbf303e07f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Taiga\_renderer\sources">
+      <UniqueIdentifier>{584ba151-4efc-4be8-8e4b-166b2813144c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Taiga\_core_stuff\sources</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Textures.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="stb_image.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VertexBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IndexBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VertexAttribs.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Window.cpp">
+      <Filter>Taiga\_core_stuff\sources</Filter>
     </ClCompile>
     <ClCompile Include="TaigaCore.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ConiferMain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="vsglassert.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Taiga\_core_stuff\sources</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Taiga\_utility\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image.cpp">
+      <Filter>Taiga\_core_stuff\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexBuffer.cpp">
+      <Filter>Taiga\_renderer\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexAttribs.cpp">
+      <Filter>Taiga\_renderer\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Taiga\_renderer\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="vsglassert.cpp">
+      <Filter>Taiga\_core_stuff\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Taiga\_renderer\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Taiga\_utility\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Taiga\_utility\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Particles.cpp">
+      <Filter>Taiga\_utility\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Taiga\_utility\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Taiga\_utility\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures.cpp">
+      <Filter>Taiga\_utility\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="game_main.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Window.h">
+      <Filter>Taiga\_core_stuff\headers</Filter>
+    </ClInclude>
     <ClInclude Include="Engine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glstuff.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Taiga.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Textures.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IndexBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexAttribs.h">
-      <Filter>Header Files</Filter>
+      <Filter>Taiga\_core_stuff\headers</Filter>
     </ClInclude>
     <ClInclude Include="TaigaCore.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vsglassert.h">
-      <Filter>Header Files</Filter>
+      <Filter>Taiga\_core_stuff\headers</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Header Files</Filter>
+      <Filter>Taiga\_utility\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="glstuff.h">
+      <Filter>Taiga\_core_stuff\headers</Filter>
     </ClInclude>
     <ClInclude Include="gmath.h">
-      <Filter>Header Files</Filter>
+      <Filter>Taiga\_core_stuff\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexAttribs.h">
+      <Filter>Taiga\_renderer\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Taiga\_renderer\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="vsglassert.h">
+      <Filter>Taiga\_core_stuff\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexBuffer.h">
+      <Filter>Taiga\_renderer\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Taiga\_renderer\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Taiga\_utility\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Taiga\_utility\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Particles.h">
+      <Filter>Taiga\_utility\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Taiga\_utility\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Taiga\_utility\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures.h">
+      <Filter>Taiga\_utility\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Taiga.h">
+      <Filter>Taiga</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Taiga\_core_stuff\headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Conifer.rc">
-      <Filter>Resource Files</Filter>
+      <Filter>_Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon1.ico">
-      <Filter>Resource Files</Filter>
+      <Filter>_Resource Files</Filter>
     </Image>
     <Image Include="..\..\..\..\..\..\dev_Rhodune\C++\GraphicsAttempts\ico.png">
-      <Filter>Resource Files</Filter>
+      <Filter>_Resource Files</Filter>
     </Image>
     <Image Include="..\..\..\..\Desktop\ico.ico">
-      <Filter>Resource Files</Filter>
+      <Filter>_Resource Files</Filter>
     </Image>
     <Image Include="..\..\..\..\Desktop\Rhodune\conifer.ico">
-      <Filter>Resource Files</Filter>
+      <Filter>_Resource Files</Filter>
     </Image>
     <Image Include="..\..\..\..\Desktop\Rhodune\coniferR4.ico">
-      <Filter>Resource Files</Filter>
+      <Filter>_Resource Files</Filter>
     </Image>
     <Image Include="..\Resources\icon.ico">
-      <Filter>Resource Files</Filter>
+      <Filter>_Resource Files</Filter>
     </Image>
     <Image Include="res\conifer4.png">
-      <Filter>Resource Files</Filter>
+      <Filter>_Resource Files</Filter>
     </Image>
   </ItemGroup>
 </Project>

@@ -24,6 +24,7 @@
     <ProjectGuid>{d67c0227-154e-4981-a170-9677ff19f81f}</ProjectGuid>
     <RootNamespace>Conifer</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Taiga</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -152,24 +153,29 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="game_main.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="Material.cpp" />
+    <ClCompile Include="Particles.cpp" />
     <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="ConiferMain.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="TaigaCore.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="VertexAttribs.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
     <ClCompile Include="vsglassert.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="gmath.h" />
+    <ClInclude Include="Particles.h" />
+    <ClInclude Include="Sprite.h" />
     <ClInclude Include="vsglassert.h" />
     <ClInclude Include="IndexBuffer.h" />
     <ClInclude Include="Material.h" />
@@ -183,6 +189,7 @@
     <ClInclude Include="Textures.h" />
     <ClInclude Include="VertexAttribs.h" />
     <ClInclude Include="VertexBuffer.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Conifer.rc" />

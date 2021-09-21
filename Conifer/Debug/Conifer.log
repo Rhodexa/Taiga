@@ -1,2 +1,5 @@
-﻿  ConiferMain.cpp
-  Conifer.vcxproj -> C:\Users\Casa\source\repos\Taiga\Debug\Conifer.exe
+﻿F:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Conifer.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Shader.cpp
+  Sprite.cpp
+  Generating Code...
+  Conifer.vcxproj -> C:\Users\Casa\source\repos\Taiga\Debug\Taiga.exe

@@ -13,11 +13,10 @@ public:
 	VertexLayout vaa;
 
 public:
-
 	Object();
 	~Object();
 
-	void make(float x, float y, float w, float h);
+	void make(const float* vertices, unsigned int v_count, const unsigned int* indices, unsigned int i_count);
 };
 
 
